@@ -1,0 +1,1819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wollnut Labs — India's Premier AI GPU Cloud</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #030712;
+  --bg2: #0a0f1e;
+  --bg3: #0d1526;
+  --accent: #00e5ff;
+  --accent2: #7c3aed;
+  --accent3: #10b981;
+  --text: #f0f6ff;
+  --text2: #94a3b8;
+  --border: rgba(0,229,255,0.12);
+  --card: rgba(13,21,38,0.9);
+  --glass: rgba(0,229,255,0.04);
+  --glow: 0 0 60px rgba(0,229,255,0.15);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* GRID BACKGROUND */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,229,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,229,255,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5%;
+  height: 68px;
+  background: rgba(3,7,18,0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 1.3rem;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+.logo span { color: var(--accent); }
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+.nav-links a {
+  color: var(--text2);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--accent); }
+
+.nav-cta {
+  background: var(--accent);
+  color: #000 !important;
+  padding: 0.45rem 1.2rem;
+  border-radius: 4px;
+  font-weight: 700 !important;
+  letter-spacing: 0.05em;
+  font-size: 0.78rem !important;
+  text-transform: uppercase;
+}
+
+/* HERO */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 120px 5% 80px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.hero-glow {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 500px;
+  background: radial-gradient(ellipse, rgba(0,229,255,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-glow2 {
+  position: absolute;
+  top: 40%;
+  left: 30%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(ellipse, rgba(124,58,237,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-content {
+  max-width: 800px;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(0,229,255,0.08);
+  border: 1px solid rgba(0,229,255,0.2);
+  border-radius: 100px;
+  padding: 0.3rem 0.9rem;
+  font-size: 0.75rem;
+  font-family: 'Space Mono', monospace;
+  color: var(--accent);
+  margin-bottom: 2rem;
+  animation: fadeInUp 0.8s ease both;
+}
+.hero-badge::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.4); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.5rem;
+  animation: fadeInUp 0.8s 0.1s ease both;
+}
+
+h1 .highlight {
+  background: linear-gradient(135deg, var(--accent), #06b6d4, var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-sub {
+  font-size: 1.1rem;
+  color: var(--text2);
+  max-width: 580px;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+  animation: fadeInUp 0.8s 0.2s ease both;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  animation: fadeInUp 0.8s 0.3s ease both;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #000;
+  padding: 0.85rem 2rem;
+  border-radius: 5px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 0 30px rgba(0,229,255,0.3);
+}
+.btn-primary:hover {
+  background: #fff;
+  box-shadow: 0 0 50px rgba(0,229,255,0.5);
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text);
+  padding: 0.85rem 2rem;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-outline:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* STATS TICKER */
+.stats-bar {
+  position: relative;
+  z-index: 1;
+  background: rgba(0,229,255,0.04);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 0;
+  overflow: hidden;
+}
+
+.stats-inner {
+  display: flex;
+  gap: 4rem;
+  animation: scroll-ticker 30s linear infinite;
+  white-space: nowrap;
+}
+
+@keyframes scroll-ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--text2);
+  flex-shrink: 0;
+}
+.stat-item strong { color: var(--accent); font-size: 1rem; }
+.stat-sep { color: var(--border); }
+
+/* SECTION */
+section { position: relative; z-index: 1; }
+
+.section-pad { padding: 100px 5%; }
+
+.section-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.8rem;
+}
+
+.section-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+.section-sub {
+  color: var(--text2);
+  max-width: 520px;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 3rem;
+}
+
+/* GPU TIERS */
+.gpu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.gpu-card {
+  background: var(--bg3);
+  padding: 2rem;
+  transition: background 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.gpu-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.gpu-card:hover { background: var(--bg2); }
+.gpu-card:hover::before { opacity: 1; }
+
+.gpu-card.featured {
+  background: linear-gradient(135deg, #0d1a2e, #0a1525);
+}
+.gpu-card.featured::before { opacity: 1; }
+.gpu-card.featured::after {
+  content: 'MOST POPULAR';
+  position: absolute;
+  top: 12px; right: 12px;
+  background: var(--accent);
+  color: #000;
+  font-size: 0.6rem;
+  font-weight: 700;
+  font-family: 'Space Mono', monospace;
+  letter-spacing: 0.1em;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+}
+
+.gpu-tier {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+
+.gpu-name {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+.gpu-chip {
+  font-size: 0.8rem;
+  color: var(--text2);
+  margin-bottom: 1.5rem;
+}
+
+.gpu-price {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.price-main {
+  font-family: 'Syne', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.price-main span {
+  font-size: 0.9rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  color: var(--text2);
+}
+
+.price-reserved {
+  font-size: 0.78rem;
+  color: var(--text2);
+  margin-top: 0.3rem;
+}
+.price-reserved strong { color: var(--accent3); }
+
+.specs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.7rem;
+  margin-bottom: 1.5rem;
+}
+
+.spec-row {
+  display: flex;
+  flex-direction: column;
+}
+
+.spec-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text2);
+  font-family: 'Space Mono', monospace;
+}
+
+.spec-val {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-top: 0.15rem;
+}
+
+.gpu-cta {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 0.7rem;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.gpu-cta-primary {
+  background: var(--accent);
+  color: #000;
+  box-shadow: 0 0 20px rgba(0,229,255,0.2);
+}
+.gpu-cta-primary:hover { box-shadow: 0 0 35px rgba(0,229,255,0.4); transform: translateY(-1px); }
+
+.gpu-cta-secondary {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+.gpu-cta-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+/* PRICING TABLE — CLUSTERS */
+.clusters-section {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.cluster-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.cluster-table th {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text2);
+  padding: 0.8rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.cluster-table td {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(0,229,255,0.05);
+  color: var(--text2);
+  vertical-align: middle;
+}
+
+.cluster-table tr:last-child td { border-bottom: none; }
+.cluster-table tr:hover td { background: rgba(0,229,255,0.02); }
+
+.cluster-table td:first-child { color: var(--text); font-weight: 600; }
+.cluster-table td.price-cell { color: var(--accent); font-family: 'Space Mono', monospace; font-weight: 700; }
+.cluster-table td.highlight-cell { color: var(--accent3); }
+
+.tag {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  font-size: 0.65rem;
+  font-family: 'Space Mono', monospace;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.tag-green { background: rgba(16,185,129,0.15); color: var(--accent3); }
+.tag-blue { background: rgba(0,229,255,0.12); color: var(--accent); }
+.tag-purple { background: rgba(124,58,237,0.15); color: #a78bfa; }
+
+/* INFRASTRUCTURE */
+.infra-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.infra-card {
+  background: var(--glass);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.8rem;
+  transition: all 0.3s;
+}
+.infra-card:hover {
+  border-color: rgba(0,229,255,0.3);
+  box-shadow: var(--glow);
+  transform: translateY(-3px);
+}
+
+.infra-icon {
+  width: 42px; height: 42px;
+  background: rgba(0,229,255,0.08);
+  border: 1px solid rgba(0,229,255,0.15);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.infra-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.infra-desc {
+  font-size: 0.82rem;
+  color: var(--text2);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.infra-specs {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.infra-specs li {
+  font-size: 0.78rem;
+  color: var(--text2);
+  font-family: 'Space Mono', monospace;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.infra-specs li::before { content: '→'; color: var(--accent); font-size: 0.7rem; }
+
+/* SLA */
+.sla-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 3rem;
+}
+
+.sla-card {
+  background: var(--bg3);
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+.sla-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+
+.sla-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text2);
+}
+
+/* REGIONS */
+.region-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  transition: all 0.2s;
+}
+.region-card:hover { border-color: rgba(0,229,255,0.25); }
+
+.region-name {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin-bottom: 0.2rem;
+}
+
+.region-loc {
+  font-size: 0.78rem;
+  color: var(--text2);
+  font-family: 'Space Mono', monospace;
+}
+
+.region-status {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.status-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+}
+.status-live { background: var(--accent3); box-shadow: 0 0 8px rgba(16,185,129,0.5); }
+.status-soon { background: #f59e0b; box-shadow: 0 0 8px rgba(245,158,11,0.5); }
+.status-planned { background: var(--text2); }
+
+/* PRICING COMPARISON */
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+  margin-top: 1.5rem;
+}
+
+.comparison-table th {
+  background: var(--bg3);
+  padding: 0.8rem 1.2rem;
+  text-align: center;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text2);
+  border: 1px solid var(--border);
+}
+
+.comparison-table th.wollnut-col {
+  background: rgba(0,229,255,0.08);
+  color: var(--accent);
+  border-color: rgba(0,229,255,0.2);
+}
+
+.comparison-table td {
+  padding: 0.85rem 1.2rem;
+  border: 1px solid var(--border);
+  text-align: center;
+  color: var(--text2);
+}
+
+.comparison-table td:first-child {
+  text-align: left;
+  font-weight: 600;
+  color: var(--text);
+  background: var(--bg3);
+}
+
+.comparison-table td.wollnut-col {
+  background: rgba(0,229,255,0.04);
+  color: var(--accent3);
+  font-weight: 700;
+}
+
+.check { color: var(--accent3); }
+.cross { color: #ef4444; }
+.partial { color: #f59e0b; }
+
+/* FOOTER */
+footer {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  padding: 4rem 5% 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.footer-brand .logo { font-size: 1.1rem; margin-bottom: 0.8rem; display: block; }
+
+.footer-desc {
+  font-size: 0.82rem;
+  color: var(--text2);
+  line-height: 1.6;
+  max-width: 280px;
+}
+
+.footer-col h4 {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text2);
+  margin-bottom: 1rem;
+}
+
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+.footer-col ul a {
+  color: var(--text2);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: color 0.2s;
+}
+.footer-col ul a:hover { color: var(--accent); }
+
+.footer-bottom {
+  border-top: 1px solid var(--border);
+  padding-top: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.78rem;
+  color: var(--text2);
+  font-family: 'Space Mono', monospace;
+}
+
+/* CONTACT BAND */
+.contact-band {
+  background: linear-gradient(135deg, rgba(0,229,255,0.06), rgba(124,58,237,0.06));
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 4rem 5%;
+  text-align: center;
+}
+
+.contact-band h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+
+.contact-band p {
+  color: var(--text2);
+  max-width: 500px;
+  margin: 0 auto 2rem;
+  font-size: 0.95rem;
+}
+
+/* NVIDIA BADGE */
+.nvidia-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(118,185,0,0.08);
+  border: 1px solid rgba(118,185,0,0.2);
+  border-radius: 6px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.72rem;
+  font-family: 'Space Mono', monospace;
+  color: #76b900;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+}
+
+/* OS BADGES */
+.os-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.7rem;
+}
+
+.os-pill {
+  background: rgba(148,163,184,0.08);
+  border: 1px solid rgba(148,163,184,0.15);
+  border-radius: 100px;
+  padding: 0.2rem 0.7rem;
+  font-size: 0.7rem;
+  font-family: 'Space Mono', monospace;
+  color: var(--text2);
+}
+
+/* STORAGE PRICING */
+.storage-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.storage-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.storage-card .s-type {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text2);
+  margin-bottom: 0.3rem;
+}
+
+.storage-card .s-name {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+.storage-card .s-price {
+  font-family: 'Space Mono', monospace;
+  color: var(--accent);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+.storage-card .s-desc {
+  font-size: 0.75rem;
+  color: var(--text2);
+  line-height: 1.5;
+}
+
+/* NETWORK */
+.net-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.net-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.net-card .n-bw {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 0.2rem;
+}
+
+.net-card .n-type {
+  font-size: 0.78rem;
+  color: var(--text);
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
+.net-card .n-price {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.82rem;
+  color: var(--accent);
+}
+
+.net-card .n-desc {
+  font-size: 0.75rem;
+  color: var(--text2);
+  line-height: 1.5;
+  margin-top: 0.4rem;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .sla-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .cluster-table { font-size: 0.72rem; }
+  .cluster-table th, .cluster-table td { padding: 0.6rem 0.5rem; }
+}
+
+/* SCROLL REVEAL */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: all 0.6s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* TICKER WRAPPER */
+.ticker-wrap {
+  display: flex;
+  width: max-content;
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">WOLLNUT<span>.</span>LABS</div>
+  <ul class="nav-links">
+    <li><a href="#gpu-cloud">GPUs</a></li>
+    <li><a href="#clusters">Clusters</a></li>
+    <li><a href="#storage">Storage</a></li>
+    <li><a href="#networking">Networking</a></li>
+    <li><a href="#infrastructure">Infrastructure</a></li>
+    <li><a href="#regions">Regions</a></li>
+    <li><a href="#contact" class="nav-cta">Get Started</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-content">
+    <div class="hero-badge">🇮🇳 India's Sovereign AI GPU Cloud — Built for Builders</div>
+    <h1>
+      The GPU Cloud<br>
+      <span class="highlight">India Deserves.</span>
+    </h1>
+    <p class="hero-sub">
+      NVIDIA H100 · H200 · B200 clusters. Bare-metal performance. Zero lock-in. Deployed from Dholera, Gujarat. Sub-millisecond latency. Data stays in India.
+    </p>
+    <div class="hero-actions">
+      <a href="#gpu-cloud" class="btn-primary">Deploy Now →</a>
+      <a href="#contact" class="btn-outline">Talk to an Expert</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS TICKER -->
+<div class="stats-bar">
+  <div class="ticker-wrap">
+    <div class="stats-inner">
+      <div class="stat-item"><strong>₹240/hr</strong><span>H100 On-Demand</span></div>
+      <div class="stat-sep">·</div>
+      <div class="stat-item"><strong>99.9%</strong><span>Power SLA</span></div>
+      <div class="stat-sep">·</div>
+      <div class="stat-item"><strong>400Gbps</strong><span>InfiniBand Fabric</span></div>
+      <div class="stat-sep">·</div>
+      <div class="stat-item"><strong>&lt;15min</strong><span>Critical Response</span></div>
+      <div class="stat-sep">·</div>
+      <div class="stat-item"><strong>Gujarat</strong><span>Dholera SIR · GIFT City</span></div>
+      <div class="stat-sep">·</div>
+      <div class="stat-item"><strong>24/7 NOC</strong><span>Dedicated Support</span></div>
+      <div class="stat-sep">·</div>
+      <div class="stat-item"><strong>NVIDIA</strong><span>DGX-Ready Infra</span></div>
+      <div class="stat-sep">·</div>
+      <div class="stat-item"><strong>ISO 27001</strong><span>Security Certified</span></div>
+      <div class="stat-sep">·</div>
+      <!-- Duplicate for infinite scroll -->
+      <div class="stat-item"><strong>₹240/hr</strong><span>H100 On-Demand</span></div>
+      <div class="stat-sep">·</div>
+      <div class="stat-item"><strong>99.9%</strong><span>Power SLA</span></div>
+      <div class="stat-sep">·</div>
+      <div class="stat-item"><strong>400Gbps</strong><span>InfiniBand Fabric</span></div>
+      <div class="stat-sep">·</div>
+      <div class="stat-item"><strong>&lt;15min</strong><span>Critical Response</span></div>
+      <div class="stat-sep">·</div>
+      <div class="stat-item"><strong>Gujarat</strong><span>Dholera SIR · GIFT City</span></div>
+      <div class="stat-sep">·</div>
+      <div class="stat-item"><strong>24/7 NOC</strong><span>Dedicated Support</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- GPU INSTANCES -->
+<section id="gpu-cloud" class="section-pad">
+  <div class="section-label">// GPU Instances</div>
+  <h2 class="section-title reveal">On-Demand & Reserved<br>GPU Compute</h2>
+  <p class="section-sub reveal">Single GPU to 1,000+ GPU clusters. Spin up in minutes. Pay by the hour. Reserve for up to 40% savings. All NVIDIA hardware. All data stays in India.</p>
+
+  <div class="gpu-grid reveal">
+
+    <!-- L40S -->
+    <div class="gpu-card">
+      <div class="nvidia-badge">NVIDIA Ada Lovelace</div>
+      <div class="gpu-tier">// Starter</div>
+      <div class="gpu-name">L40S 48GB</div>
+      <div class="gpu-chip">Per GPU Instance · OL</div>
+      <div class="gpu-price">
+        <div class="price-main">₹80<span>/hr</span></div>
+        <div class="price-reserved">Reserved 1yr: <strong>₹58/hr</strong> · Save 27%</div>
+      </div>
+      <div class="specs-grid">
+        <div class="spec-row">
+          <span class="spec-label">GPU Memory</span>
+          <span class="spec-val">48 GB GDDR6</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">vCPUs</span>
+          <span class="spec-val">24 vCPUs</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">RAM</span>
+          <span class="spec-val">96 GB DDR5</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">Storage</span>
+          <span class="spec-val">2 TB NVMe</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">Network</span>
+          <span class="spec-val">10 Gbps</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">TFLOPS (FP16)</span>
+          <span class="spec-val">362 TFLOPS</span>
+        </div>
+      </div>
+      <div class="os-list">
+        <span class="os-pill">Ubuntu 22.04</span>
+        <span class="os-pill">Ubuntu 24.04</span>
+        <span class="os-pill">Debian 12</span>
+        <span class="os-pill">Rocky 9</span>
+      </div>
+      <br>
+      <a href="#contact" class="gpu-cta gpu-cta-secondary">Deploy L40S →</a>
+    </div>
+
+    <!-- A100 -->
+    <div class="gpu-card">
+      <div class="nvidia-badge">NVIDIA Ampere</div>
+      <div class="gpu-tier">// Standard</div>
+      <div class="gpu-name">A100 80GB</div>
+      <div class="gpu-chip">Per GPU Instance · SXM4</div>
+      <div class="gpu-price">
+        <div class="price-main">₹150<span>/hr</span></div>
+        <div class="price-reserved">Reserved 1yr: <strong>₹108/hr</strong> · Save 28%</div>
+      </div>
+      <div class="specs-grid">
+        <div class="spec-row">
+          <span class="spec-label">GPU Memory</span>
+          <span class="spec-val">80 GB HBM2e</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">vCPUs</span>
+          <span class="spec-val">48 vCPUs</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">RAM</span>
+          <span class="spec-val">192 GB DDR4</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">Storage</span>
+          <span class="spec-val">5 TB NVMe</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">Network</span>
+          <span class="spec-val">25 Gbps</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">TFLOPS (FP16)</span>
+          <span class="spec-val">312 TFLOPS</span>
+        </div>
+      </div>
+      <div class="os-list">
+        <span class="os-pill">Ubuntu 22.04</span>
+        <span class="os-pill">Ubuntu 24.04</span>
+        <span class="os-pill">CentOS 9</span>
+        <span class="os-pill">Debian 12</span>
+        <span class="os-pill">Windows</span>
+      </div>
+      <br>
+      <a href="#contact" class="gpu-cta gpu-cta-secondary">Deploy A100 →</a>
+    </div>
+
+    <!-- H100 - FEATURED -->
+    <div class="gpu-card featured">
+      <div class="nvidia-badge">NVIDIA Hopper</div>
+      <div class="gpu-tier">// Performance</div>
+      <div class="gpu-name">H100 80GB</div>
+      <div class="gpu-chip">Per GPU Instance · SXM5</div>
+      <div class="gpu-price">
+        <div class="price-main">₹240<span>/hr</span></div>
+        <div class="price-reserved">Reserved 1yr: <strong>₹175/hr</strong> · Save 27%</div>
+      </div>
+      <div class="specs-grid">
+        <div class="spec-row">
+          <span class="spec-label">GPU Memory</span>
+          <span class="spec-val">80 GB HBM3</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">vCPUs</span>
+          <span class="spec-val">64 vCPUs</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">RAM</span>
+          <span class="spec-val">256 GB DDR5</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">Storage</span>
+          <span class="spec-val">10 TB NVMe</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">Network</span>
+          <span class="spec-val">200 Gbps IB</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">TFLOPS (FP8)</span>
+          <span class="spec-val">3,958 TFLOPS</span>
+        </div>
+      </div>
+      <div class="os-list">
+        <span class="os-pill">Ubuntu 22.04</span>
+        <span class="os-pill">Ubuntu 24.04</span>
+        <span class="os-pill">Rocky 9</span>
+        <span class="os-pill">Debian 12</span>
+        <span class="os-pill">Windows</span>
+      </div>
+      <br>
+      <a href="#contact" class="gpu-cta gpu-cta-primary">Deploy H100 →</a>
+    </div>
+
+    <!-- H200 -->
+    <div class="gpu-card">
+      <div class="nvidia-badge">NVIDIA Hopper Ultra</div>
+      <div class="gpu-tier">// Ultra</div>
+      <div class="gpu-name">H200 141GB</div>
+      <div class="gpu-chip">Per GPU Instance · SXM5</div>
+      <div class="gpu-price">
+        <div class="price-main">₹380<span>/hr</span></div>
+        <div class="price-reserved">Reserved 1yr: <strong>₹275/hr</strong> · Save 28%</div>
+      </div>
+      <div class="specs-grid">
+        <div class="spec-row">
+          <span class="spec-label">GPU Memory</span>
+          <span class="spec-val">141 GB HBM3e</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">vCPUs</span>
+          <span class="spec-val">96 vCPUs</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">RAM</span>
+          <span class="spec-val">512 GB DDR5</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">Storage</span>
+          <span class="spec-val">20 TB NVMe</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">Network</span>
+          <span class="spec-val">400 Gbps IB</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">Mem BW</span>
+          <span class="spec-val">4.8 TB/s</span>
+        </div>
+      </div>
+      <div class="os-list">
+        <span class="os-pill">Ubuntu 22.04</span>
+        <span class="os-pill">Ubuntu 24.04</span>
+        <span class="os-pill">Rocky 9</span>
+        <span class="os-pill">Debian 12</span>
+      </div>
+      <br>
+      <a href="#contact" class="gpu-cta gpu-cta-secondary">Deploy H200 →</a>
+    </div>
+
+    <!-- B200 -->
+    <div class="gpu-card">
+      <div class="nvidia-badge">NVIDIA Blackwell</div>
+      <div class="gpu-tier">// Sovereign</div>
+      <div class="gpu-name">B200 180GB</div>
+      <div class="gpu-chip">Per GPU Instance · SXM6</div>
+      <div class="gpu-price">
+        <div class="price-main">₹650<span>/hr</span></div>
+        <div class="price-reserved">Reserved 1yr: <strong>₹470/hr</strong> · Save 28%</div>
+      </div>
+      <div class="specs-grid">
+        <div class="spec-row">
+          <span class="spec-label">GPU Memory</span>
+          <span class="spec-val">180 GB HBM3e</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">vCPUs</span>
+          <span class="spec-val">128 vCPUs</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">RAM</span>
+          <span class="spec-val">1 TB DDR5</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">Storage</span>
+          <span class="spec-val">40 TB NVMe</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">Network</span>
+          <span class="spec-val">800 Gbps IB</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">TFLOPS (FP4)</span>
+          <span class="spec-val">9,000 TFLOPS</span>
+        </div>
+      </div>
+      <div class="os-list">
+        <span class="os-pill">Ubuntu 24.04</span>
+        <span class="os-pill">Rocky 9</span>
+      </div>
+      <br>
+      <a href="#contact" class="gpu-cta gpu-cta-secondary">Deploy B200 →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- CLUSTERS PRICING -->
+<section id="clusters" class="clusters-section section-pad">
+  <div class="section-label">// HPC Clusters</div>
+  <h2 class="section-title reveal">Multi-GPU Cluster Pricing</h2>
+  <p class="section-sub reveal">Full DGX-class nodes with NVSwitch, InfiniBand fabric, and dedicated networking. For LLM training, fine-tuning, and distributed inference at scale.</p>
+
+  <div style="overflow-x:auto;" class="reveal">
+    <table class="cluster-table">
+      <thead>
+        <tr>
+          <th>Cluster Config</th>
+          <th>GPU</th>
+          <th>GPU Mem</th>
+          <th>vCPUs</th>
+          <th>RAM</th>
+          <th>TFLOPS (FP8)</th>
+          <th>NVMe Storage</th>
+          <th>Network</th>
+          <th>On-Demand / hr</th>
+          <th>Reserved 1yr / hr</th>
+          <th>Workload</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>8× A100 Node <span class="tag tag-green">Available</span></td>
+          <td>8× NVIDIA A100 SXM4</td>
+          <td>8× 80GB HBM2e</td>
+          <td>128</td>
+          <td>1 TB DDR4</td>
+          <td>2,496 TFLOPS</td>
+          <td>30 TB NVMe</td>
+          <td>200Gbps RoCE</td>
+          <td class="price-cell">₹1,150/hr</td>
+          <td class="price-cell highlight-cell">₹850/hr</td>
+          <td><span class="tag tag-blue">Inference · Fine-tune</span></td>
+        </tr>
+        <tr>
+          <td>8× H100 Node <span class="tag tag-green">Available</span></td>
+          <td>8× NVIDIA H100 SXM5</td>
+          <td>8× 80GB HBM3</td>
+          <td>192</td>
+          <td>2 TB DDR5</td>
+          <td>31,664 TFLOPS</td>
+          <td>60 TB NVMe</td>
+          <td>400Gbps InfiniBand</td>
+          <td class="price-cell">₹1,800/hr</td>
+          <td class="price-cell highlight-cell">₹1,300/hr</td>
+          <td><span class="tag tag-blue">LLM Training · Fine-tune</span></td>
+        </tr>
+        <tr>
+          <td>16× H100 Cluster <span class="tag tag-green">Available</span></td>
+          <td>16× NVIDIA H100 SXM5</td>
+          <td>16× 80GB HBM3</td>
+          <td>384</td>
+          <td>4 TB DDR5</td>
+          <td>63,328 TFLOPS</td>
+          <td>120 TB NVMe</td>
+          <td>800Gbps InfiniBand</td>
+          <td class="price-cell">₹3,500/hr</td>
+          <td class="price-cell highlight-cell">₹2,550/hr</td>
+          <td><span class="tag tag-purple">Large-Scale Training</span></td>
+        </tr>
+        <tr>
+          <td>32× H100 Cluster <span class="tag tag-green">Available</span></td>
+          <td>32× NVIDIA H100 SXM5</td>
+          <td>32× 80GB HBM3</td>
+          <td>768</td>
+          <td>8 TB DDR5</td>
+          <td>126,656 TFLOPS</td>
+          <td>240 TB NVMe</td>
+          <td>1.6Tbps InfiniBand</td>
+          <td class="price-cell">₹6,800/hr</td>
+          <td class="price-cell highlight-cell">₹4,900/hr</td>
+          <td><span class="tag tag-purple">Foundation Models</span></td>
+        </tr>
+        <tr>
+          <td>8× H200 Node <span class="tag tag-green">Available</span></td>
+          <td>8× NVIDIA H200 SXM5</td>
+          <td>8× 141GB HBM3e</td>
+          <td>256</td>
+          <td>3 TB DDR5</td>
+          <td>31,664 TFLOPS</td>
+          <td>80 TB NVMe</td>
+          <td>800Gbps InfiniBand</td>
+          <td class="price-cell">₹2,900/hr</td>
+          <td class="price-cell highlight-cell">₹2,100/hr</td>
+          <td><span class="tag tag-purple">LLM + Long Context</span></td>
+        </tr>
+        <tr>
+          <td>8× B200 Node <span class="tag tag-blue">Q3 2026</span></td>
+          <td>8× NVIDIA B200 SXM6</td>
+          <td>8× 180GB HBM3e</td>
+          <td>320</td>
+          <td>4 TB DDR5</td>
+          <td>72,000 TFLOPS</td>
+          <td>160 TB NVMe</td>
+          <td>1.6Tbps InfiniBand</td>
+          <td class="price-cell">₹4,900/hr</td>
+          <td class="price-cell highlight-cell">₹3,500/hr</td>
+          <td><span class="tag tag-purple">Frontier AI · Blackwell</span></td>
+        </tr>
+        <tr>
+          <td>Custom ≥100 GPU <span class="tag tag-blue">Enterprise</span></td>
+          <td>Mix: H100 / H200 / B200</td>
+          <td>Custom</td>
+          <td>Custom</td>
+          <td>Custom</td>
+          <td>Custom</td>
+          <td>Up to 1 PB</td>
+          <td>Custom IB Fabric</td>
+          <td class="price-cell">Negotiated</td>
+          <td class="price-cell highlight-cell">Reserved Contract</td>
+          <td><span class="tag tag-green">Sovereign AI · Govt</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- STORAGE -->
+<section id="storage" class="section-pad">
+  <div class="section-label">// Storage</div>
+  <h2 class="section-title reveal">High-Performance Storage</h2>
+  <p class="section-sub reveal">From blazing-fast NVMe scratch to durable object storage. Designed for AI data pipelines, checkpointing, and large dataset handling.</p>
+
+  <div class="storage-grid reveal">
+    <div class="storage-card">
+      <div class="s-type">// Local NVMe Scratch</div>
+      <div class="s-name">Ephemeral SSD</div>
+      <div class="s-price">Included</div>
+      <div class="s-desc">High-speed local NVMe included with every GPU instance. 2–160 TB depending on instance type. Ideal for training scratch space and model checkpoints.</div>
+    </div>
+    <div class="storage-card">
+      <div class="s-type">// Block Storage</div>
+      <div class="s-name">Persistent SSD</div>
+      <div class="s-price">₹6/GB/month</div>
+      <div class="s-desc">NVMe-backed persistent block volumes. Up to 100 TB per volume. &lt;1ms latency. IOPS: up to 500,000. Perfect for datasets and model repos.</div>
+    </div>
+    <div class="storage-card">
+      <div class="s-type">// Shared Filesystem</div>
+      <div class="s-name">Parallel FS (Lustre)</div>
+      <div class="s-price">₹4/GB/month</div>
+      <div class="s-desc">High-throughput parallel filesystem. 1M+ IOPS aggregate. Up to 1 PB. Shared across multi-node clusters for distributed training.</div>
+    </div>
+    <div class="storage-card">
+      <div class="s-type">// Object Storage</div>
+      <div class="s-name">Wollnut S3-Compatible</div>
+      <div class="s-price">₹1.2/GB/month</div>
+      <div class="s-desc">S3-compatible object store. Unlimited capacity. 99.999999999% durability. Egress within India: ₹0. Ideal for datasets, model weights, outputs.</div>
+    </div>
+    <div class="storage-card">
+      <div class="s-type">// Snapshot & Backup</div>
+      <div class="s-name">GPU Snapshots</div>
+      <div class="s-price">₹0.8/GB/month</div>
+      <div class="s-desc">Point-in-time snapshots of running GPU instances including OS, CUDA stack, and libraries. Instant restore. Save your entire training environment.</div>
+    </div>
+    <div class="storage-card">
+      <div class="s-type">// AI Model Registry</div>
+      <div class="s-name">Wollnut Model Store</div>
+      <div class="s-price">₹1.5/GB/month</div>
+      <div class="s-desc">Versioned model registry with direct GPU-mount capability. Compatible with HuggingFace Hub API. Deploy models directly to inference endpoints.</div>
+    </div>
+  </div>
+</section>
+
+<!-- NETWORKING -->
+<section id="networking" class="clusters-section section-pad">
+  <div class="section-label">// Networking</div>
+  <h2 class="section-title reveal">Fabric & Connectivity Pricing</h2>
+  <p class="section-sub reveal">From GPU-to-GPU InfiniBand to global CDN — we handle the full network stack so your models train faster and your APIs respond in milliseconds.</p>
+
+  <div class="net-grid reveal">
+    <div class="net-card">
+      <div class="n-bw">200G</div>
+      <div class="n-type">InfiniBand HDR</div>
+      <div class="n-price">Included · H100 Single Node</div>
+      <div class="n-desc">Per-GPU InfiniBand for single-node H100 training. NVSwitch all-to-all fabric. Full bisection bandwidth.</div>
+    </div>
+    <div class="net-card">
+      <div class="n-bw">400G</div>
+      <div class="n-type">InfiniBand NDR</div>
+      <div class="n-price">Included · Multi-Node H100/H200</div>
+      <div class="n-desc">Scale-out fabric for multi-node distributed training. RoCE v2 fallback. RDMA-enabled. Linear scaling to 1,000+ GPUs.</div>
+    </div>
+    <div class="net-card">
+      <div class="n-bw">800G</div>
+      <div class="n-type">InfiniBand NDR2</div>
+      <div class="n-price">Included · B200 Clusters</div>
+      <div class="n-desc">Next-gen 800GbE / NDR InfiniBand. Arista 7800R4 spine. Designed for Blackwell-scale training runs.</div>
+    </div>
+    <div class="net-card">
+      <div class="n-bw">10G</div>
+      <div class="n-type">Public Egress</div>
+      <div class="n-price">₹3/GB egress · India free</div>
+      <div class="n-desc">Tier-1 uplinks via Tata, Airtel, BSNL. India-India traffic is free. Ingress always free. DDoS protection included.</div>
+    </div>
+    <div class="net-card">
+      <div class="n-bw">1G</div>
+      <div class="n-type">Dedicated MPLS</div>
+      <div class="n-price">From ₹80,000/month</div>
+      <div class="n-desc">Private MPLS links to enterprise premises. Mumbai/Bengaluru/Delhi PoPs. 99.99% availability. For regulated sectors.</div>
+    </div>
+    <div class="net-card">
+      <div class="n-bw">100G</div>
+      <div class="n-type">Cross-Connect</div>
+      <div class="n-price">₹25,000/month</div>
+      <div class="n-desc">Direct cross-connect to Yotta, CtrlS, STT or hyperscaler PoPpers in Mumbai/Chennai. Sub-ms latency.</div>
+    </div>
+  </div>
+</section>
+
+<!-- INFRASTRUCTURE -->
+<section id="infrastructure" class="section-pad">
+  <div class="section-label">// Data Center Infrastructure</div>
+  <h2 class="section-title reveal">Built for AI. Built in Gujarat.</h2>
+  <p class="section-sub reveal">Our Dholera SIR facility is purpose-built for high-density GPU computing. Every MW designed for liquid-cooled, HPC-grade workloads from day one.</p>
+
+  <div class="sla-grid reveal">
+    <div class="sla-card">
+      <div class="sla-num">99.9%</div>
+      <div class="sla-label">Power Availability</div>
+    </div>
+    <div class="sla-card">
+      <div class="sla-num">99.7%</div>
+      <div class="sla-label">Compute SLA</div>
+    </div>
+    <div class="sla-card">
+      <div class="sla-num">99.9%</div>
+      <div class="sla-label">Network SLA</div>
+    </div>
+    <div class="sla-card">
+      <div class="sla-num">&lt;15m</div>
+      <div class="sla-label">Critical Response</div>
+    </div>
+  </div>
+
+  <div class="infra-grid reveal">
+    <div class="infra-card">
+      <div class="infra-icon">⚡</div>
+      <div class="infra-title">Power & Redundancy</div>
+      <div class="infra-desc">Utility-grade power with N+1 UPS, 2N critical paths, and diesel backup. Zero single points of failure.</div>
+      <ul class="infra-specs">
+        <li>3 MW Phase 1 IT Load (scalable to 30 MW)</li>
+        <li>PUE: 1.35 with liquid cooling</li>
+        <li>HT/EHT substation — direct utility feed</li>
+        <li>2N UPS — Schneider Electric Galaxy VL</li>
+        <li>N+1 CAT diesel generators</li>
+        <li>Renewable energy target: 60% solar</li>
+      </ul>
+    </div>
+    <div class="infra-card">
+      <div class="infra-icon">❄️</div>
+      <div class="infra-title">Cooling Architecture</div>
+      <div class="infra-desc">Rear-door heat exchangers + direct-to-chip liquid cooling for H100/H200/B200 racks up to 120kW density.</div>
+      <ul class="infra-specs">
+        <li>Air + Liquid hybrid cooling</li>
+        <li>Direct-to-chip: 120 kW/rack capable</li>
+        <li>CRAC precision air cooling baseline</li>
+        <li>Rear-door heat exchangers (Schneider)</li>
+        <li>Adiabatic cooling for water efficiency</li>
+        <li>WUE target: &lt;0.3L per kWh</li>
+      </ul>
+    </div>
+    <div class="infra-card">
+      <div class="infra-icon">🌐</div>
+      <div class="infra-title">Networking Fabric</div>
+      <div class="infra-desc">Arista 7800R4 spine, NVIDIA QM9700 InfiniBand switches. Full bisection bandwidth for any cluster size.</div>
+      <ul class="infra-specs">
+        <li>Arista 7800R4 — 3.2 Tbps spine</li>
+        <li>NVIDIA QM9700 InfiniBand switches</li>
+        <li>800GbE fabric for Blackwell clusters</li>
+        <li>RDMA over Converged Ethernet (RoCE)</li>
+        <li>100G multi-homed internet uplinks</li>
+        <li>BGP anycast, full DDoS mitigation</li>
+      </ul>
+    </div>
+    <div class="infra-card">
+      <div class="infra-icon">🔒</div>
+      <div class="infra-title">Security & Compliance</div>
+      <div class="infra-desc">Physical + cyber. MeitY cloud empanelled. ISO 27001 target. Data sovereignty guaranteed — no data leaves India.</div>
+      <ul class="infra-specs">
+        <li>Biometric + mantrap physical access</li>
+        <li>ISO 27001 certification (in progress)</li>
+        <li>SOC 2 Type II audit path</li>
+        <li>End-to-end encryption: MACsec + IPsec</li>
+        <li>24/7 SOC with SIEM integration</li>
+        <li>MeitY empanelment roadmap</li>
+      </ul>
+    </div>
+    <div class="infra-card">
+      <div class="infra-icon">🧠</div>
+      <div class="infra-title">GPU Fleet OEM Stack</div>
+      <div class="infra-desc">Best-in-class OEM mix for GPU servers, networking, and power — built for reliability at hyperscale density.</div>
+      <ul class="infra-specs">
+        <li>GPU: NVIDIA H100/H200/B200 SXM</li>
+        <li>Servers: Supermicro / Netweb / HPE</li>
+        <li>Networking: Arista + NVIDIA QSFP800</li>
+        <li>Power: Schneider Electric UPS + PDU</li>
+        <li>Cooling: Schneider + Motivair DLC</li>
+        <li>Storage: Pure Storage / DDN Lustre</li>
+      </ul>
+    </div>
+    <div class="infra-card">
+      <div class="infra-icon">🛠️</div>
+      <div class="infra-title">Software Stack</div>
+      <div class="infra-desc">Kubernetes-native platform with Run:AI orchestration, vLLM inference, and full observability. OpenAI-compatible API.</div>
+      <ul class="infra-specs">
+        <li>Orchestration: Kubernetes + Run:AI</li>
+        <li>Inference: vLLM + TensorRT-LLM</li>
+        <li>MLOps: Kubeflow + MLflow</li>
+        <li>Monitoring: Prometheus + Grafana</li>
+        <li>DCIM: Schneider EcoStruxure</li>
+        <li>API: OpenAI-compatible REST/gRPC</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- REGIONS -->
+<section id="regions" class="clusters-section section-pad">
+  <div class="section-label">// Availability Zones</div>
+  <h2 class="section-title reveal">India-First. India-Only.</h2>
+  <p class="section-sub reveal">All infrastructure physically located in India. Your data never leaves Indian jurisdiction. Sovereign AI compute from coast to coast.</p>
+
+  <div class="reveal">
+    <div class="region-card">
+      <div>
+        <div class="region-name">WL-IN-GJ-DHL01 · Dholera SIR</div>
+        <div class="region-loc">Dholera Special Investment Region, Gujarat · Primary AZ</div>
+      </div>
+      <div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap;">
+        <span class="tag tag-green">Live Q4 2026</span>
+        <div class="region-status"><div class="status-dot status-live"></div> COMING LIVE</div>
+        <div style="font-family:'Space Mono',monospace;font-size:0.75rem;color:var(--text2);">H100 · H200 · B200 · Phase 1: 3 MW → 30 MW</div>
+      </div>
+    </div>
+    <div class="region-card">
+      <div>
+        <div class="region-name">WL-IN-GJ-GIF01 · GIFT City</div>
+        <div class="region-loc">Gujarat International Finance Tec-City, Gandhinagar · BFSI AZ</div>
+      </div>
+      <div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap;">
+        <span class="tag tag-blue">2027</span>
+        <div class="region-status"><div class="status-dot status-soon"></div> PLANNING</div>
+        <div style="font-family:'Space Mono',monospace;font-size:0.75rem;color:var(--text2);">BFSI · Fintech · Govt · Sovereign zone</div>
+      </div>
+    </div>
+    <div class="region-card">
+      <div>
+        <div class="region-name">WL-IN-MH-MUM01 · Mumbai Metro</div>
+        <div class="region-loc">Navi Mumbai / Airoli, Maharashtra · Enterprise AZ</div>
+      </div>
+      <div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap;">
+        <span class="tag tag-blue">2027</span>
+        <div class="region-status"><div class="status-dot status-soon"></div> PLANNING</div>
+        <div style="font-family:'Space Mono',monospace;font-size:0.75rem;color:var(--text2);">Hyperscaler PoP · Enterprise · Startup</div>
+      </div>
+    </div>
+    <div class="region-card">
+      <div>
+        <div class="region-name">WL-IN-KA-BLR01 · Bengaluru</div>
+        <div class="region-loc">Whitefield, Karnataka · Tech Hub AZ</div>
+      </div>
+      <div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap;">
+        <span class="tag tag-purple">2028</span>
+        <div class="region-status"><div class="status-dot status-planned"></div> ROADMAP</div>
+        <div style="font-family:'Space Mono',monospace;font-size:0.75rem;color:var(--text2);">Startup · Research · Inference edge</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section class="section-pad">
+  <div class="section-label">// Competitive Benchmark</div>
+  <h2 class="section-title reveal">Why Wollnut Labs</h2>
+  <p class="section-sub reveal">Compared to hyperscalers and Indian neocloud providers — on the dimensions that matter when you're building AI in India.</p>
+
+  <div style="overflow-x:auto;" class="reveal">
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th style="text-align:left;">Feature</th>
+          <th class="wollnut-col">Wollnut Labs</th>
+          <th>AWS / Azure</th>
+          <th>Neysa</th>
+          <th>Yotta</th>
+          <th>E2E Cloud</th>
+          <th>CoreWeave</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>H100 On-Demand (per GPU/hr)</td>
+          <td class="wollnut-col">₹240</td>
+          <td>₹340–500</td>
+          <td>Custom</td>
+          <td>₹280–350</td>
+          <td>₹220–300</td>
+          <td>₹520+</td>
+        </tr>
+        <tr>
+          <td>Data stays in India</td>
+          <td class="wollnut-col"><span class="check">✓ Always</span></td>
+          <td><span class="partial">⚠ Region-based</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">✗ USA</span></td>
+        </tr>
+        <tr>
+          <td>B200 / Blackwell Available</td>
+          <td class="wollnut-col"><span class="check">✓ Q3 2026</span></td>
+          <td><span class="partial">⚠ Limited</span></td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Gujarat / Dholera SIR Presence</td>
+          <td class="wollnut-col"><span class="check">✓ Primary DC</span></td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="cross">✗</span></td>
+        </tr>
+        <tr>
+          <td>Bare Metal Dedicated Clusters</td>
+          <td class="wollnut-col"><span class="check">✓</span></td>
+          <td><span class="cross">✗ Shared</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="partial">⚠</span></td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>24/7 Support &lt;15min response</td>
+          <td class="wollnut-col"><span class="check">✓</span></td>
+          <td><span class="cross">✗ Enterprise only</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="partial">⚠</span></td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Reserved Contract (12/24/36 mo)</td>
+          <td class="wollnut-col"><span class="check">✓ Up to 40% off</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>MeitY Empanelled</td>
+          <td class="wollnut-col"><span class="partial">⚠ In progress</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="partial">⚠</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">✗</span></td>
+        </tr>
+        <tr>
+          <td>OpenAI-Compatible Inference API</td>
+          <td class="wollnut-col"><span class="check">✓</span></td>
+          <td><span class="partial">⚠ Proprietary</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="partial">⚠</span></td>
+          <td><span class="partial">⚠</span></td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Liquid Cooling (DLC) Ready</td>
+          <td class="wollnut-col"><span class="check">✓ from Day 1</span></td>
+          <td><span class="partial">⚠ Selective</span></td>
+          <td><span class="partial">⚠</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="partial">⚠</span></td>
+          <td><span class="check">✓</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- CONTACT CTA -->
+<section id="contact" class="contact-band">
+  <div class="section-label" style="text-align:center;">// Get Started</div>
+  <h2>Ready to Deploy at Scale?</h2>
+  <p>Talk to our solutions team for custom cluster pricing, enterprise SLAs, and reserved contracts. We respond within 2 business hours.</p>
+  <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+    <a href="mailto:cloud@wollnutlabs.com" class="btn-primary">cloud@wollnutlabs.com →</a>
+    <a href="tel:+918888000000" class="btn-outline">+91 88880 00000</a>
+  </div>
+  <br>
+  <div style="display:flex;gap:0.5rem;justify-content:center;flex-wrap:wrap;margin-top:1rem;">
+    <span class="os-pill">Wollnut Labs Pvt. Ltd.</span>
+    <span class="os-pill">Dholera SIR, Gujarat 382460</span>
+    <span class="os-pill">CIN: U72900GJ2026PTC000000</span>
+    <span class="os-pill">GSTIN: 24XXXXX1234Z1</span>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="logo">WOLLNUT<span>.</span>LABS</span>
+      <p class="footer-desc">India's sovereign AI GPU cloud — purpose-built for the next decade of Indian artificial intelligence. Data stays in India. Always.</p>
+      <div style="margin-top:1rem;display:flex;flex-direction:column;gap:0.3rem;">
+        <div class="nvidia-badge">NVIDIA DGX-Ready Infrastructure Partner</div>
+        <div class="nvidia-badge" style="background:rgba(0,229,255,0.06);border-color:rgba(0,229,255,0.15);color:var(--accent);">MeitY Empanelment In Progress</div>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Products</h4>
+      <ul>
+        <li><a href="#">GPU Instances</a></li>
+        <li><a href="#">HPC Clusters</a></li>
+        <li><a href="#">Inference-as-a-Service</a></li>
+        <li><a href="#">Storage Solutions</a></li>
+        <li><a href="#">Networking</a></li>
+        <li><a href="#">Managed MLOps</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Wollnut Labs</a></li>
+        <li><a href="#">Our Mission</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Press</a></li>
+        <li><a href="#">Partners</a></li>
+        <li><a href="#">Blog</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Legal & Trust</h4>
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">SLA Definitions</a></li>
+        <li><a href="#">Security Centre</a></li>
+        <li><a href="#">Compliance Docs</a></li>
+        <li><a href="#">Status Page</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Wollnut Labs Pvt. Ltd. · Gujarat, India</span>
+    <span style="font-size:0.65rem;">Dholera SIR · GIFT City · Mumbai · Bengaluru</span>
+  </div>
+</footer>
+
+<script>
+// Scroll reveal
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.08 });
+revealEls.forEach(el => io.observe(el));
+</script>
+</body>
+</html>
